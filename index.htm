@@ -10,20 +10,38 @@
     <div id="main">
       <div id="panel">
         <div id="pTop">
-          <div class="elem">
+          <div class="elem hidden">
             <h4>Hit</h4>
             <div class="box">5</div>
           </div>
-          <div class="elem">
+          <div class="elem hidden">
             <h4>Timer</h4>
             <div class="box">60</div>
           </div>
-          <div class="elem">
+          <div class="elem hidden">
             <h4>Score</h4>
             <div class="box">0</div>
           </div>
         </div>
-        <div id="pBtm"><button class="btn">Start Game</button></div>
+        <div id="pBtm">
+          <div id="start" class="show hidden">
+            <h2>Rules for the game:</h2>
+            <ol>
+              <li>See the number that is displayed in the "hit" section.</li>
+              <li>
+                Search for that number in the bubbles and click as fast as
+                possible.
+              </li>
+              <li>For every right hit you will be awarded 10 points.</li>
+              <li>You will have 60 seconds to score points.</li>
+              <li>
+                Once the timer runs out, you will be able to see you final
+                score.
+              </li>
+            </ol>
+            <button id="btn">Start Game</button>
+          </div>
+        </div>
       </div>
     </div>
     <script src="script.js"></script>

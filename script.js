@@ -1,3 +1,12 @@
+let gameStart = () => {
+  document.querySelector("#btn").addEventListener("click", () => {
+    // alert("hey it works");
+    makeBubble();
+    runTimer();
+    getNewHit();
+    toggleButton();
+  });
+};
 const makeBubble = () => {
   let clutter = "";
   for (i = 1; i <= 126; i++) {
@@ -7,9 +16,8 @@ const makeBubble = () => {
 
   document.querySelector("#pBtm").innerHTML = clutter;
 };
-
+let timer = 60;
 const runTimer = () => {
-  let timer = 60;
   let setTimer = setInterval(() => {
     if (timer > 0) {
       timer--;
@@ -18,10 +26,16 @@ const runTimer = () => {
       clearInterval(setTimer);
       document.querySelector(
         "#pBtm"
-      ).innerHTML = `<h1>Game Over!</h1><br/><h2>Your Score is ${score}</h2>`;
+      ).innerHTML = `<h1>Game Over!</h1><br/><h2>Your Score is ${score}</h2><button id="btn">Start Again</button>`;
+      timer = 60;
+      document.getElementsByClassName("box")[1].innerHTML = timer;
+      score = 0;
+      document.getElementsByClassName("box")[2].innerHTML = score;
+      toggleButton();
+      gameStart();
+
       document.querySelector("#pBtm").style.flexDirection = "column";
       document.querySelector("#pBtm").style.color = "rgb(5, 95, 133)";
-      //   document.getElementsByTagName("button").style.display = "block";
     }
   }, 1000);
 };
@@ -43,6 +57,9 @@ const increaseScore = () => {
   score += 10;
   document.getElementsByClassName("box")[2].innerHTML = score;
 };
-runTimer();
-makeBubble();
-getNewHit();
+toggleButton = () => {
+  document.getElementsByClassName("elem")[0].classList.toggle("hidden");
+  document.getElementsByClassName("elem")[1].classList.toggle("hidden");
+  document.getElementsByClassName("elem")[2].classList.toggle("hidden");
+};
+gameStart();
